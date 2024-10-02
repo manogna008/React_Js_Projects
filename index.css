@@ -1,3 +1,93 @@
-#heading {
-  color: red;
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+.logo {
+  width: 100px;
+}
+.nav-items > ul {
+  display: flex;
+  list-style-type: none;
+  font-size: 24px;
+}
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+.res_card {
+  width: 210px;
+  padding: 10px;
+  background-color: lightgrey;
+  margin: 10px;
+  display: grid;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-top: 2px;
+  gap: 10px;
+}
+.cusine {
+  font-family: Gilroy;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.6);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.res_name {
+  margin: 0px;
+  font-family: Gilroy_Bold;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.92);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.star_rating {
+  font-family: Gilroy;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.92);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.search {
+  margin: 10px;
+  padding: 10px;
+}
+.res_img {
+  width: 100%;
+  height: 210px;
+}
+.rest_container {
+  padding: 0px;
+  list-style: none;
+  margin-block-end: 0px;
+  display: grid;
+  -webkit-box-align: start;
+  align-items: start;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  margin: 32px 16px;
+}
+.filter_btn {
+  margin: 10px;
 }

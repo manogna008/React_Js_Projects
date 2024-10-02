@@ -1,0 +1,29 @@
+{
+  "name": "react_js_projects",
+  "version": "1.0.0",
+  "description": "React Js Practice",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manogna008/React_Js_Projects.git"
+  },
+  "keywords": [],
+  "author": "Manogna Bade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manogna008/React_Js_Projects/issues"
+  },
+  "homepage": "https://github.com/manogna008/React_Js_Projects#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
