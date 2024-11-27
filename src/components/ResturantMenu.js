@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { Menu_API } from "../utils/constants";
+import useResturantMenu from "../utils/useResturantMenu";
+
 const ResturantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-
   const { resId } = useParams();
-  console.log(resId);
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(Menu_API + resId);
-    const json = await data.json();
-    setResInfo(json.data);
-    console.log(json);
-  };
+  const resInfo = useResturantMenu(resId);
+  console.log(resInfo);
   if (resInfo === null) {
     return <Shimmer />;
   }
@@ -25,10 +14,14 @@ const ResturantMenu = () => {
 
   const itemmap = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
   const Recommended = itemmap.filter((item) => {
-    if (item.card.card.title == "Recommended") {
+    if (
+      item.card?.card?.["@type"] ==
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    ) {
       return item;
     }
   });
+  console.log(Recommended, "recomd");
   const { itemCards } = Recommended[0].card.card;
 
   return (
@@ -41,7 +34,7 @@ const ResturantMenu = () => {
         {itemCards.map((item) => (
           <li key={item.card.info.id}>
             {item.card.info.name} - {" Rs. "}
-            {item.card.info.price / 100}
+            {item.card.info.defaultPrice / 100 || item.card.info.price / 100}
           </li>
         ))}
       </ul>

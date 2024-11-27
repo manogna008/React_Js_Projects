@@ -2,6 +2,8 @@ import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { Rest_API } from "../utils/constants";
 
 const Body = () => {
   const [listOfRest, setListOfRest] = useState([]);
@@ -15,9 +17,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.67740&lng=83.20360&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(Rest_API);
     const json = await data.json();
     //optional chaining
     const swiggyList =
@@ -27,10 +27,9 @@ const Body = () => {
     setFilterRest(swiggyList);
   };
 
-  //Conditional rendering
-  // if (listOfRest.length === 0) {
-  //   return <Shimmer />;
-  // }
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return <h1>You are offline, please check your internet connection</h1>;
 
   return listOfRest.length === 0 ? (
     <Shimmer />
