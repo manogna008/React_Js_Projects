@@ -130,3 +130,38 @@
   padding: 10px;
   border: 1px solid black;
 }
+.menu_img {
+  width: 119px;
+  /* height: 60px; */
+  margin: 9px;
+}
+.menu {
+  max-width: 800px;
+  min-height: 800px;
+  margin: 20px auto 0;
+}
+.accod {
+}
+.accod-title {
+  font-family: Gilroy;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.92);
+}
+.accord-head {
+  position: relative;
+  margin: 24px 16px 16px;
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding-right: 28px;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+.grey-border {
+  border-top: 16px solid rgba(2, 6, 12, 0.05);
+}
