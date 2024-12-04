@@ -1,14 +1,16 @@
 import RestroCard from "./RestroCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { Rest_API } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRest, setListOfRest] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterRest, setFilterRest] = useState([]);
+  const { setUserName, loggedInUser } = useContext(UserContext);
   //whenever state vairable update, react triggers a reconciliation cycle(re-render the component)
 
   //2nd way communication
@@ -69,6 +71,13 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <label>UserName : </label>
+        <input
+          text="text"
+          className="search_bar"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+        ></input>
       </div>
       <div className="rest_container">
         {filterRest.map((rest) => (
