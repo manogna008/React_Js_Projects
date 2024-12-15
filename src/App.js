@@ -8,6 +8,9 @@ import ResturantMenu from "./components/ResturantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ContactUS from "./components/ContactUs";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -20,17 +23,19 @@ const AppComponent = () => {
     setUserName(data.name);
   }, []);
   return (
-    //default user
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      {/* Manogna Bade */}
-      <div className="app">
-        <UserContext.Provider value={{ loggedInUser: "Sri Hansika" }}>
-          {/* Sri Hansika*/}
-          <Header />
-        </UserContext.Provider>
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      //default user
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        {/* Manogna Bade */}
+        <div className="app">
+          <UserContext.Provider value={{ loggedInUser: "Sri Hansika" }}>
+            {/* Sri Hansika*/}
+            <Header />
+          </UserContext.Provider>
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 const appRouter = createBrowserRouter([
@@ -61,6 +66,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/resturants/:resId",
         element: <ResturantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
