@@ -32,10 +32,10 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return <h1>You are offline, please check your internet connection</h1>;
-
-  return listOfRest.length === 0 ? (
-    <Shimmer />
-  ) : (
+  if (listOfRest === null) {
+    return <Shimmer />;
+  }
+  return (
     <div className="body">
       <div className="filter">
         <div className="search">
